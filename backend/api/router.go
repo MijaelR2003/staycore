@@ -29,6 +29,12 @@ func Start() {
 	api.HandleFunc("/guests", controllers.GetGuests).Methods("GET")
 	api.HandleFunc("/guests", controllers.CreateGuest).Methods("POST")
 
+	// Rooms
+	api.HandleFunc("/properties/{id}/rooms", controllers.GetRooms).Methods("GET")
+	api.HandleFunc("/properties/{id}/rooms", controllers.CreateRoom).Methods("POST")
+	api.HandleFunc("/properties/{id}/rooms/{rid}", controllers.GetRoom).Methods("GET")
+	api.HandleFunc("/properties/{id}/rooms/{rid}", controllers.UpdateRoom).Methods("PUT")
+	api.HandleFunc("/properties/{id}/rooms/{rid}", controllers.DeleteRoom).Methods("DELETE")
 	// Properties
 	api.HandleFunc("/properties", controllers.GetProperties).Methods("GET")
 	api.HandleFunc("/properties", controllers.CreateProperty).Methods("POST")

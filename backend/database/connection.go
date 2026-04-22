@@ -31,6 +31,7 @@ func Connect() {
 	db.AutoMigrate(
 		&models.Guest{},
 		&models.Property{},
+		&models.Room{},
 	)
 
 	log.Println("Database connected successfully")
