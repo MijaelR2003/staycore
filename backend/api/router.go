@@ -29,6 +29,13 @@ func Start() {
 	api.HandleFunc("/guests", controllers.GetGuests).Methods("GET")
 	api.HandleFunc("/guests", controllers.CreateGuest).Methods("POST")
 
+	// Properties
+	api.HandleFunc("/properties", controllers.GetProperties).Methods("GET")
+	api.HandleFunc("/properties", controllers.CreateProperty).Methods("POST")
+	api.HandleFunc("/properties/{id}", controllers.GetProperty).Methods("GET")
+	api.HandleFunc("/properties/{id}", controllers.UpdateProperty).Methods("PUT")
+	api.HandleFunc("/properties/{id}", controllers.DeleteProperty).Methods("DELETE")
+
 	// CORS
 	c := cors.New(cors.Options{
 		AllowedOrigins: []string{"http://localhost:5173"},
