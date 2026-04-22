@@ -32,7 +32,7 @@ func Connect() {
 		&models.Guest{},
 		&models.Property{},
 		&models.Room{},
-	)
+	)	
 
 	log.Println("Database connected successfully")
 	DB = db
