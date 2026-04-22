@@ -28,7 +28,11 @@ func Connect() {
 	}
 
 	// Crea las tablas automáticamente
-	db.AutoMigrate(&models.Guest{})
+	db.AutoMigrate(
+		&models.Guest{},
+		&models.Property{},
+		&models.Room{},
+	)
 
 	log.Println("Database connected successfully")
 	DB = db
