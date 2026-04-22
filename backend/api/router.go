@@ -35,6 +35,12 @@ func Start() {
 	api.HandleFunc("/properties/{id}/rooms/{rid}", controllers.GetRoom).Methods("GET")
 	api.HandleFunc("/properties/{id}/rooms/{rid}", controllers.UpdateRoom).Methods("PUT")
 	api.HandleFunc("/properties/{id}/rooms/{rid}", controllers.DeleteRoom).Methods("DELETE")
+	// Properties
+	api.HandleFunc("/properties", controllers.GetProperties).Methods("GET")
+	api.HandleFunc("/properties", controllers.CreateProperty).Methods("POST")
+	api.HandleFunc("/properties/{id}", controllers.GetProperty).Methods("GET")
+	api.HandleFunc("/properties/{id}", controllers.UpdateProperty).Methods("PUT")
+	api.HandleFunc("/properties/{id}", controllers.DeleteProperty).Methods("DELETE")
 
 	// CORS
 	c := cors.New(cors.Options{
