@@ -60,7 +60,6 @@ const navItems = [
   { path: '/', label: 'Dashboard', icon: 'pi pi-home' },
   { path: '/guests', label: 'Huéspedes', icon: 'pi pi-users' },
   { path: '/properties', label: 'Propiedades', icon: 'pi pi-building' },
-  { path: '/rooms', label: 'Habitaciones', icon: 'pi pi-th-large' },
   { path: '/bookings', label: 'Reservas', icon: 'pi pi-calendar' },
 ]
 </script>
