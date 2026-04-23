@@ -80,4 +80,4 @@ onMounted(async () => {
   stats.value.guests = guestsRes.data.data.length
   stats.value.bookings = bookingsRes.data.data.length
 })
-</script>
+</script>   
