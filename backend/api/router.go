@@ -43,6 +43,15 @@ func Start() {
 	api.HandleFunc("/properties/{id}/rooms/{rid}", controllers.UpdateRoom).Methods("PUT")
 	api.HandleFunc("/properties/{id}/rooms/{rid}", controllers.DeleteRoom).Methods("DELETE")
 
+	// Bookings
+	api.HandleFunc("/bookings", controllers.GetBookings).Methods("GET")
+	api.HandleFunc("/bookings", controllers.CreateBooking).Methods("POST")
+	api.HandleFunc("/bookings/{id}", controllers.GetBooking).Methods("GET")
+	api.HandleFunc("/bookings/{id}", controllers.UpdateBooking).Methods("PUT")
+	api.HandleFunc("/bookings/{id}", controllers.CancelBooking).Methods("DELETE")
+	api.HandleFunc("/bookings/{id}/checkin", controllers.CheckInBooking).Methods("POST")
+	api.HandleFunc("/bookings/{id}/checkout", controllers.CheckOutBooking).Methods("POST")
+
 	// CORS
 	c := cors.New(cors.Options{
 		AllowedOrigins: []string{"http://localhost:5173"},
