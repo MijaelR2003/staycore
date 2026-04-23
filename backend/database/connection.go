@@ -32,6 +32,9 @@ func Connect() {
 		&models.Guest{},
 		&models.Property{},
 		&models.Room{},
+		&models.Booking{},
+		&models.CheckIn{},
+		&models.CheckOut{},
 	)
 
 	log.Println("Database connected successfully")

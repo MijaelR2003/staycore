@@ -29,18 +29,28 @@ func Start() {
 	api.HandleFunc("/guests", controllers.GetGuests).Methods("GET")
 	api.HandleFunc("/guests", controllers.CreateGuest).Methods("POST")
 
-	// Rooms
-	api.HandleFunc("/properties/{id}/rooms", controllers.GetRooms).Methods("GET")
-	api.HandleFunc("/properties/{id}/rooms", controllers.CreateRoom).Methods("POST")
-	api.HandleFunc("/properties/{id}/rooms/{rid}", controllers.GetRoom).Methods("GET")
-	api.HandleFunc("/properties/{id}/rooms/{rid}", controllers.UpdateRoom).Methods("PUT")
-	api.HandleFunc("/properties/{id}/rooms/{rid}", controllers.DeleteRoom).Methods("DELETE")
 	// Properties
 	api.HandleFunc("/properties", controllers.GetProperties).Methods("GET")
 	api.HandleFunc("/properties", controllers.CreateProperty).Methods("POST")
 	api.HandleFunc("/properties/{id}", controllers.GetProperty).Methods("GET")
 	api.HandleFunc("/properties/{id}", controllers.UpdateProperty).Methods("PUT")
 	api.HandleFunc("/properties/{id}", controllers.DeleteProperty).Methods("DELETE")
+
+	// Rooms
+	api.HandleFunc("/properties/{id}/rooms", controllers.GetRooms).Methods("GET")
+	api.HandleFunc("/properties/{id}/rooms", controllers.CreateRoom).Methods("POST")
+	api.HandleFunc("/properties/{id}/rooms/{rid}", controllers.GetRoom).Methods("GET")
+	api.HandleFunc("/properties/{id}/rooms/{rid}", controllers.UpdateRoom).Methods("PUT")
+	api.HandleFunc("/properties/{id}/rooms/{rid}", controllers.DeleteRoom).Methods("DELETE")
+
+	// Bookings
+	api.HandleFunc("/bookings", controllers.GetBookings).Methods("GET")
+	api.HandleFunc("/bookings", controllers.CreateBooking).Methods("POST")
+	api.HandleFunc("/bookings/{id}", controllers.GetBooking).Methods("GET")
+	api.HandleFunc("/bookings/{id}", controllers.UpdateBooking).Methods("PUT")
+	api.HandleFunc("/bookings/{id}", controllers.CancelBooking).Methods("DELETE")
+	api.HandleFunc("/bookings/{id}/checkin", controllers.CheckInBooking).Methods("POST")
+	api.HandleFunc("/bookings/{id}/checkout", controllers.CheckOutBooking).Methods("POST")
 
 	// CORS
 	c := cors.New(cors.Options{
