@@ -1,7 +1,7 @@
 <template>
   <AdminLayout pageTitle="Dashboard">
     <!-- Stats -->
-    <div class="grid grid-cols-3 gap-6 mb-8">
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-6 mb-6 lg:mb-8">
       <div class="bg-white rounded-xl shadow-sm p-6">
         <div class="flex items-center justify-between mb-4">
           <span class="text-gray-500 text-sm font-medium uppercase">Huéspedes</span>
@@ -39,16 +39,16 @@
     <!-- Quick actions -->
     <div class="bg-white rounded-xl shadow-sm p-6">
       <h3 class="text-gray-700 font-semibold mb-4">Acciones rápidas</h3>
-      <div class="flex gap-4">
+      <div class="flex flex-wrap gap-3">
         <RouterLink
-          to="/guests/new"
+          to="/guests"
           class="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm"
         >
           <i class="pi pi-plus" />
           Nuevo huésped
         </RouterLink>
         <RouterLink
-          to="/bookings/new"
+          to="/bookings"
           class="flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm"
         >
           <i class="pi pi-plus" />
@@ -65,19 +65,14 @@ import { RouterLink } from 'vue-router'
 import AdminLayout from '@/components/layout/AdminLayout.vue'
 import api from '@/services/api'
 
-const stats = ref({
-  guests: 0,
-  bookings: 0,
-  rooms: 0
-})
+const stats = ref({ guests: 0, bookings: 0, rooms: 0 })
 
 onMounted(async () => {
   const [guestsRes, bookingsRes] = await Promise.all([
     api.get('/guests'),
     api.get('/bookings'),
   ])
-
   stats.value.guests = guestsRes.data.data.length
   stats.value.bookings = bookingsRes.data.data.length
 })
-</script>   
+</script>
