@@ -168,9 +168,31 @@ import Textarea from 'primevue/textarea'
 import Tag from 'primevue/tag'
 import api from '@/services/api'
 
-const bookings = ref([])
-const guests = ref([])
-const rooms = ref([])
+interface Guest {
+  id: string
+  first_name: string
+  last_name: string
+  full_name?: string
+}
+
+interface Room {
+  id: string
+  label: string
+}
+
+interface Booking {
+  id: string
+  guest_id: string
+  room_id: string
+  status: string
+  check_in_date: string
+  check_out_date: string
+  source: string
+}
+
+const bookings = ref<Booking[]>([])
+const guests = ref<Guest[]>([])
+const rooms = ref<Room[]>([])
 const loading = ref(false)
 const saving = ref(false)
 const dialogVisible = ref(false)
@@ -273,12 +295,12 @@ const closeDialog = () => {
 }
 
 const saveBooking = async () => {
-  if (!form.value.guest_id || !form.value.room_id || !form.value.check_in_date) return
+  if (!form.value.guest_id || !form.value.room_id || !form.value.check_in_date || !form.value.check_out_date) return
   saving.value = true
   await api.post('/bookings', {
     ...form.value,
-    check_in_date: new Date(form.value.check_in_date).toISOString(),
-    check_out_date: new Date(form.value.check_out_date).toISOString(),
+    check_in_date: new Date(form.value.check_in_date as Date).toISOString(),
+    check_out_date: new Date(form.value.check_out_date as Date).toISOString(),
   })
   await fetchBookings()
   saving.value = false

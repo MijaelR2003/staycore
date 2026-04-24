@@ -93,8 +93,16 @@ import Dialog from 'primevue/dialog'
 import InputText from 'primevue/inputtext'
 import api from '@/services/api'
 
+interface Property {
+  id: string
+  name: string
+  address: string
+  phone: string
+  email: string
+}
+
 const router = useRouter()
-const properties = ref([])
+const properties = ref<Property[]>([])
 const loading = ref(false)
 const saving = ref(false)
 const dialogVisible = ref(false)

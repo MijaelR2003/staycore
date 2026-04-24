@@ -102,11 +102,21 @@ import Select from 'primevue/select'
 import Tag from 'primevue/tag'
 import api from '@/services/api'
 
+interface Room {
+  id: string
+  number: string
+  type: string
+  capacity: number
+  floor: number
+  price: number
+  status: string
+}
+
 const router = useRouter()
 const route = useRoute()
 const propertyId = route.params.id as string
 
-const rooms = ref([])
+const rooms = ref<Room[]>([])
 const propertyName = ref('')
 const loading = ref(false)
 const saving = ref(false)
